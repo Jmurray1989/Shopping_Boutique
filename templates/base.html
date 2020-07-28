@@ -1,10 +1,12 @@
 {% load static %}
 
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
+
+    {% block meta %}
+
     <meta http-equiv="X - UA - compatible" content="ie=edge" />
     <meta charset="utf-8" />
     <meta
@@ -12,7 +14,12 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
 
+    {% endblock %} {% block extra_meta %} {% endblock %}
+
     <!-- Bootstrap CSS -->
+
+    {% block corecss %}
+
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -20,7 +27,12 @@
       crossorigin="anonymous"
     />
 
+    {% endblock %} {% block extra_css %} {% endblock %}
+
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    {% block corejs %}
+
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -37,9 +49,24 @@
       crossorigin="anonymous"
     ></script>
 
-    <title>Shopping Boutique</title>
+    {% endblock %} {% block extra_js %} {% endblock %}
+
+    <title>Shopping Boutique {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <header class="container-fluid fixed-top"></header>
+
+    {% if messages %}
+    <div class="message-container"></div>
+    {% endif %}
+
+    {% block page_header %}
+    {% endblock %}
+
+    {% block content %}
+    {% endblock %}
+
+    {% block postloadjs %}
+    {% endblock %}
   </body>
 </html>
